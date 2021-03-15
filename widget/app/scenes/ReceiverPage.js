@@ -101,7 +101,7 @@ SceneReceiverPage.prototype.CheckReceivedTorrent = function() {
         dataType: "json",
         timeout: 25000,
         success: function(data) {
-            if (receivingProgress == true && data && data.infohash != "") {
+            if (receivingProgress == true && data && data.received != "") {
                 receivingProgress = false;
                 receiverWaiting = true;
 
@@ -120,14 +120,14 @@ SceneReceiverPage.prototype.CheckReceivedTorrent = function() {
 
                         $.ajax({ url: "http://" + serverIP + ":9000/api/receivemagnet/stop", success: function(result) {}});
 
-                        resume['hash'] = data.infohash;
+                        resume['hash'] = data.received;
                         resume['imdb'] = '';
                         resume['season'] = 0;
                         resume['episode'] = 0;
                         resume['index'] = -1;
                         resume['time'] = 0;
 
-                        SceneReceiverPage.prototype.StartTorrentDownload("", data.infohash);
+                        SceneReceiverPage.prototype.StartTorrentDownload("", btoa(data.received));
                     }, 4000);
                 }
             }
@@ -141,11 +141,11 @@ SceneReceiverPage.prototype.CheckReceivedTorrent = function() {
     });
 }
 
-SceneReceiverPage.prototype.StartTorrentDownload = function(titletext, torrenthash) {
+SceneReceiverPage.prototype.StartTorrentDownload = function(titletext, base64uri) {
     var reqStartSuccess = false;
     widgetAPI.putInnerHTML(document.getElementById("SettingsText"), loadingText[lang]);
 
-    if (torrenthash != '') {
+    if (base64uri != '') {
         this.titletext = titletext;
         this.videolist = [];
         this.langpos = languageListText['shortcode'].indexOf(saveSettings['subtitlelang']);
@@ -221,7 +221,7 @@ SceneReceiverPage.prototype.StartTorrentDownload = function(titletext, torrentha
         }.bind(this));
 
         
-        xhr.open("GET", 'http://' + serverIP + ':9000/api/add/' + torrenthash);
+        xhr.open("GET", 'http://' + serverIP + ':9000/api/add/' + base64uri);
         xhr.send();
 
     }

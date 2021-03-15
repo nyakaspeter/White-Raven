@@ -749,6 +749,40 @@ SceneInfoPage.prototype.GetTVMazeInfo = function(tvdb, imdb) {
       if (xhr.readyState == 4 && xhr.status == 200) {
         var dataobject = JSON.parse(xhr.responseText).results;
 
+        // Sort episodes by episode number
+        dataobject.sort(function(a, b) {
+            if (a.number < b.number) {
+                return -1;
+            } else if (a.number > b.number) {
+                return 1;
+            }
+            return 0;
+        });
+
+        // Sort episodes by season number
+        dataobject.sort(function(a, b) {
+            if (a.season < b.season) {
+                return -1;
+            } else if (a.season > b.season) {
+                return 1;
+            }
+            return 0;
+        });
+
+        // Add S00E00 and E00 to the beginning of each season (for season/series pack search)
+        var lastAddedSeason = 0;
+        var episodesWithWildcards = [{season: 0, number: 0, airdate: "0"}];
+        for (var i=0; i<dataobject.length; i++) {
+            if (dataobject[i].airdate) {
+                if (dataobject[i].season !== lastAddedSeason) {
+                    episodesWithWildcards.push({season: dataobject[i].season, number: 0, airdate: dataobject[i].airdate});
+                }
+                episodesWithWildcards.push(dataobject[i]);
+                lastAddedSeason = dataobject[i].season;
+            }
+        }
+        dataobject = episodesWithWildcards;
+
         var maxIndex = dataobject.length;
         
         widgetAPI.putInnerHTML(document.getElementById("episodemenu"), seasonText[lang] + "</br>");
@@ -909,7 +943,10 @@ SceneInfoPage.prototype.GetTVMazeInfo = function(tvdb, imdb) {
       }
     }.bind(this));
 
-    xhr.open("GET", "http://" + serverIP + ":9000/api/tvmazeepisodes/tvdb/" + tvdb + "/imdb/" + imdb)
+    xhr.open("GET", "http://" + serverIP + ":9000/api/tvmazeepisodes"
+        + (tvdb ? "/tvdb/" + tvdb : "")
+        + (imdb ? "/imdb/" + imdb : "")
+    );
     xhr.send();
 
     // No internet connection or connection timeout handling
@@ -958,7 +995,8 @@ SceneInfoPage.prototype.GetResolverData = function(imdb, type, title, year, seas
                     subdata['imdbid'] = imdb;
                     subdata['title'] = dataobject[i]['title'];
                     subdata['resolution'] = dataobject[i]['quality'];
-                    subdata['magneturl'] = "magnet:?xt=urn:btih:" + dataobject[i]['hash'];
+                    subdata['magneturl'] = dataobject[i]['magnet'];
+                    subdata['torrenturl'] = dataobject[i]['torrent'];
                     subdata['provider'] = dataobject[i]['provider'];
                     subdata['size'] = dataobject[i]['size'];
                     subdata['seeds'] = dataobject[i]['seeds'];
@@ -985,7 +1023,8 @@ SceneInfoPage.prototype.GetResolverData = function(imdb, type, title, year, seas
                     subdata['imdbid'] = imdb;
                     subdata['title'] = dataobject[i]['title'];
                     subdata['resolution'] = dataobject[i]['quality'];
-                    subdata['magneturl'] = "magnet:?xt=urn:btih:" + dataobject[i]['hash'];
+                    subdata['magneturl'] = dataobject[i]['magnet'];
+                    subdata['torrenturl'] = dataobject[i]['torrent'];
                     subdata['provider'] = dataobject[i]['provider'];
                     subdata['size'] = dataobject[i]['size'];
                     subdata['seeds'] = dataobject[i]['seeds'];

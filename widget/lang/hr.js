@@ -94,11 +94,11 @@ languageListText['hr'] = ['AUTOMATSKI',
                         'LITVANSKI', 'NORVEŠKI', 'PERZIJSKI', 'POLJSKI', 'PORTUGALSKI', 'PORTUGALSKI ( BR )', 'RUMUNJSKI', 'RUSKI', 'SRPSKI',
                         'SLOVAČKI', 'ŠPANJOLSKI', 'SVAHILI', 'ŠVEDSKI', 'TAJLANDSKI', 'TURSKI', 'URDU', 'VIJETNAMSKI'];                      
 interfaceLangText['hr'] = ['AUTOMATSKI', 'BUGARSKI', 'HRVATSKI', 'ENGLESKI', 'MAĐARSKI', 'ŠPANJOLSKI', 'SLOVAČKI', 'TALIJANSKI'];
-movieSourceListText['hr'] = ['POPCORN TIME', 'YTS', 'RARBG', '1337X', 'POPCORN TIME ONLINE', 'ITORRENT'];
-tvSourceListText['hr'] = ['POPCORN TIME', 'EZTV', 'RARBG', '1337X'];
+movieSourceListText['hr'] = ['JACKETT', 'POPCORN TIME', 'YTS', 'RARBG', '1337X', 'POPCORN TIME ONLINE', 'ITORRENT'];
+tvSourceListText['hr'] = ['JACKETT', 'POPCORN TIME', 'EZTV', 'RARBG', '1337X', 'ITORRENT'];
 subtitleModeListText['hr'] = ['IMDB ID', 'FILE HASH'];
-downSpeedListText['hr'] = ['128 kb/s', '256 kb/s', '512 kb/s', '1024 kb/s', '2048 kb/s', '4096 kb/s', '8192 kb/s', 'NEOGRANIČENO'];
-upSpeedListText['hr'] = ['128 kb/s', '256 kb/s', '512 kb/s', '1024 kb/s', '2048 kb/s', '4096 kb/s', '8192 kb/s', 'NEOGRANIČENO'];
+downSpeedListText['hr'] = ['256 KB/s', '512 KB/s', '1 MB/s', '2 MB/s', '4 MB/s', '6 MB/s', '8 MB/s', 'NEOGRANIČENO'];
+upSpeedListText['hr'] = ['256 KB/s', '512 KB/s', '1 MB/s', '2 MB/s', '4 MB/s', '6 MB/s', '8 MB/s', 'ONEMOGUČENO'];
 genresMovieMenuText['hr'] = ['SVI ŽANROVI', 'AKCIJA', 'AVANTURA', 'ANIMACIJA', 'KOMEDIJA', 'KRIMIĆ', 'DOKUMENTARCI', 'DRAMA', 'OBITELJSKI', 'FANTAZIJA', 'POVIJEST', 'HOROR', 'GLAZBA', 'MISTERIJA', 'ROMANSA', 'ZNANSTVENA FANTASTIKA', 'TRILER', 'RATNI', 'KAUBOJAC'];
 genresTVMenuText['hr'] = ['SVI ŽANROVI', 'AKCIJA I AVANTURA', 'ANIMACIJA', 'KOMEDIJA', 'KRIMIĆ', 'DOKUMETARCI', 'DRAMA', 'OBITELJSKI', 'DJEČJI', 'MISTERIJA', 'NOVOSTI', 'RIJALITI', 'ZNANSTVENA FANTASTIKA I FANTAZIJA', 'SAPUNICE', 'RAZGOVOR', 'RAT I POLITIKA', 'KAUBOJAC'];
 sortMovieMenuText['hr'] = ['NAJPOPULARNIJE', 'NEDAVNO IZAŠLO', 'NAJOCJENJENIJE'];

@@ -4,6 +4,7 @@ SceneHostsMenu.prototype.initialize = function () {
     this.waiting = false;
     this.titletext = '';
     this.magneturl = '';
+    this.torrenturl = '';
     this.notorrent = false;
     this.playurl = '';
     this.filetitle = '';
@@ -24,31 +25,44 @@ SceneHostsMenu.prototype.handleShow = function () {
     thehostlist.style.top = 'initial';
     widgetAPI.putInnerHTML(thehostlist, "");
 
-    // Sort magnet links by languages: 1. By database language
-    var worklist = [];
+    // Filter out x265 torrents, because the TV can't play them
+    var filteredlist = [];
     for(var i=0; i<torrenturls.length; i++) {
-        if (torrenturls[i].shortlang == saveSettings['database'] && torrenturls[i].title.toLowerCase().indexOf("h265") == -1 && torrenturls[i].title.toLowerCase().indexOf("x265") == -1) {
-            worklist.push(torrenturls[i]);
+        if (torrenturls[i].title.toLowerCase().indexOf("hevc") == -1
+            && torrenturls[i].title.toLowerCase().indexOf("h265") == -1
+            && torrenturls[i].title.toLowerCase().indexOf("x265") == -1) {
+            filteredlist.push(torrenturls[i]);
+        }
+    }
+
+    // Sort magnet links by languages: 1. By database language
+    var sortedlist = [];
+    for(var i=0; i<filteredlist.length; i++) {
+        if (filteredlist[i].shortlang == saveSettings['database']) {
+            sortedlist.push(filteredlist[i]);
         }
     }
 
     // Sort magnet links by languages: 2. The fallback language always english
     if (saveSettings['database'] != 'en') {
-        for(var i=0; i<torrenturls.length; i++) {
-            if (torrenturls[i].shortlang == 'en' && torrenturls[i].title.toLowerCase().indexOf("h265") == -1 && torrenturls[i].title.toLowerCase().indexOf("x265") == -1) {
-                worklist.push(torrenturls[i]);
+        for(var i=0; i<filteredlist.length; i++) {
+            if (filteredlist[i].shortlang == 'en') {
+                sortedlist.push(filteredlist[i]);
             }
         }
     }
 
     // Sort magnet links by languages: 3. Push without modification
-    for(var i=0; i<torrenturls.length; i++) {
-        if (torrenturls[i].shortlang != saveSettings['database'] && torrenturls[i].shortlang != 'en' && torrenturls[i].title.toLowerCase().indexOf("h265") == -1 && torrenturls[i].title.toLowerCase().indexOf("x265") == -1) {
-            worklist.push(torrenturls[i]);
+    for(var i=0; i<filteredlist.length; i++) {
+        if (filteredlist[i].shortlang != saveSettings['database'] && filteredlist[i].shortlang != 'en') {
+            sortedlist.push(filteredlist[i]);
         }
     }
 
-    torrenturls = worklist;
+    // Display the sorted list if it's not empty (so not all torrents are x265), otherwise display all torrents
+    if (sortedlist.length != 0) {
+        torrenturls = sortedlist;
+    }
 
     for(var i=0; i<torrenturls.length; i++) {    
         var listitem = document.createElement('li');
@@ -58,7 +72,10 @@ SceneHostsMenu.prototype.handleShow = function () {
         } else {
             aitem.className = "";
         }
-        var torrentinfo = torrenturls[i].title + '</BR>' + torrenturls[i].provider + ' | ' + torrenturls[i].resolution + ' | ' + torrenturls[i].language;
+        var torrentinfo = torrenturls[i].title + '</BR>'
+            + torrenturls[i].provider + ' | '
+            + (torrenturls[i].resolution ? torrenturls[i].resolution + " | " : "")
+            + torrenturls[i].language;
 
         if (torrenturls[i].size != "0") {
             torrentinfo = torrentinfo + ' | ' + bytesToSize(torrenturls[i].size);
@@ -145,15 +162,14 @@ SceneHostsMenu.prototype.SetWaitAndZIndex = function(state, number) {
     }
 };
 
-SceneHostsMenu.prototype.StartTorrentDownload = function(titletext, torrenturl) {
+SceneHostsMenu.prototype.StartTorrentDownload = function(titletext, base64uri) {
     var reqStartSuccess = false;
     widgetAPI.putInnerHTML(document.getElementById("SettingsText"), loadingText[lang]);
 
-    if (torrenturl != '') {
+    if (base64uri != '') {
         this.titletext = titletext;
         this.videolist = [];
 
-        var torrenthash = torrenturl.match(/btih:([^&]+)/);
         var videofiles = ["3g2", "3gp", "aaf", "asf", "avchd", "avi", "drc", "flv", "m2v", "m4p", "m4v", "mkv", "mng", "mov", "mp2", "mp4", "mpe", "mpeg", "mpg", "mpv", "mxf", "nsv", "ogg", "ogv", "qt", "rm", "rmvb", "roq", "svi", "vob", "webm", "wmv", "yuv"];
         var playlength = 0;
 
@@ -237,7 +253,7 @@ SceneHostsMenu.prototype.StartTorrentDownload = function(titletext, torrenturl) 
         }.bind(this));
 
         
-        xhr.open("GET", 'http://' + serverIP + ':9000/api/add/' + torrenthash[1]);
+        xhr.open("GET", 'http://' + serverIP + ':9000/api/add/' + base64uri);
         xhr.send();
 
     }
@@ -316,18 +332,19 @@ SceneHostsMenu.prototype.handleKeyDown = function (keyCode) {
                                 infoHash = '';
                                 this.titletext = torrenturls[i].title;
                                 this.magneturl = torrenturls[i].magneturl;
+                                this.torrenturl = torrenturls[i].torrenturl;
                                 this.imdbid = torrenturls[i].imdbid;
                                 this.season = torrenturls[i].season;
                                 this.episode = torrenturls[i].episode;
 
-                                resume['hash'] = this.magneturl.match(/btih:([^&]+)/)[1];
+                                resume['hash'] = this.magneturl ? this.magneturl : this.torrenturl;
                                 resume['imdb'] = this.imdbid;
                                 resume['season'] = this.season;
                                 resume['episode'] = this.episode;
                                 resume['index'] = -1;
                                 resume['time'] = 0;
                                 
-                                this.StartTorrentDownload(this.titletext, this.magneturl);
+                                this.StartTorrentDownload(this.titletext, this.magneturl ? btoa(this.magneturl) : btoa(this.torrenturl));
                                 break;
                             }
                         }
