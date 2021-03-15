@@ -37,7 +37,7 @@
 
 If you have a rooted E, F, or H series Samsung Smart TV, you can run both the client and the server simultaneously on your television.
 
-1. Download or build the root version of White Raven.
+1. [Download](https://github.com/nyakaspeter/whiteraven/releases) or [build](https://github.com/nyakaspeter/whiteraven#build-instructions) the root version of White Raven.
 2. Connect to your television over FTP/SFTP.
 3. Create a folder named as `WhiteRaven` (Case sensitive!) inside the `/mtd_rwcommon/widgets/user` directory.
 4. Extract the contents of the downloaded zip file to this directory.
