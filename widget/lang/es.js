@@ -94,11 +94,11 @@ languageListText['es'] = ['AUTOMÁTICO',
                         'LITUANO', 'NORUEGO', 'PERSA', 'POLACO', 'PORTUGUÉS', 'PORTUGUÉS ( BR )', 'RUMANO', 'RUSO', 'SERBIO',
                         'ESLOVACO', 'ESPAÑOL', 'SUAJILI', 'SUECO', 'TAILANDÉS', 'TURCO', 'URDU', 'VIETNAMITA'];                      
 interfaceLangText['es'] = ['AUTOMÁTICO', 'BÚLGARO', 'CROATA', 'INGLÉS', 'HÚNGARO', 'ESPAÑOL', 'ESLOVACO', 'ITALIANO'];
-movieSourceListText['es'] = ['POPCORN TIME', 'YTS', 'RARBG', '1337X', 'POPCORN TIME ONLINE', 'ITORRENT'];
-tvSourceListText['es'] = ['POPCORN TIME', 'EZTV', 'RARBG', '1337X'];
+movieSourceListText['es'] = ['JACKETT', 'POPCORN TIME', 'YTS', 'RARBG', '1337X', 'POPCORN TIME ONLINE', 'ITORRENT'];
+tvSourceListText['es'] = ['JACKETT', 'POPCORN TIME', 'EZTV', 'RARBG', '1337X', 'ITORRENT'];
 subtitleModeListText['es'] = ['IMDB ID', 'HASH DEL FICHERO'];
-downSpeedListText['es'] = ['128 Kbps', '256 Kbps', '512 Kbps', '1024 Kbps', '2048 Kbps', '4096 Kbps', '8192 Kbps', 'ILIMITADO'];
-upSpeedListText['es'] = ['128 Kbps', '256 Kbps', '512 Kbps', '1024 Kbps', '2048 Kbps', '4096 Kbps', '8192 Kbps', 'ILIMITADO'];
+downSpeedListText['es'] = ['256 KB/s', '512 KB/s', '1 MB/s', '2 MB/s', '4 MB/s', '6 MB/s', '8 MB/s', 'ILIMITADO'];
+upSpeedListText['es'] = ['256 KB/s', '512 KB/s', '1 MB/s', '2 MB/s', '4 MB/s', '6 MB/s', '8 MB/s', 'DISCAPACITADA'];
 genresMovieMenuText['es'] = ['TODOS LOS GÉNEROS', 'ACCIÓN', 'AVENTURA', 'ANIMACIÓN', 'COMEDIA', 'CRIMEN', 'DOCUMENTAL', 'DRAMA', 'FAMILIA', 'FANTASÍA', 'HISTORIA', 'TERROR', 'MUSICAL', 'INTRIGA', 'ROMANCE', 'CIENCIA FICCIÓN', 'THRILLER', 'BÉLICO', 'WESTERN'];
 genresTVMenuText['es'] = ['TODOS LOS GÉNEROS', 'ACCIÓN Y AVENTURA', 'ANIMACIÓN', 'COMEDIA', 'CRIMEN', 'DOCUMENTAL', 'DRAMA', 'FAMILIA', 'INFANTIL', 'INTRIGA', 'NOTICIAS', 'REALITY', 'CIENCIA FICCIÓN Y FANTASÍA', 'TELENOVELA', 'ENTREVISTA', 'BÉLICO Y POLÍTICO', 'WESTERN'];
 sortMovieMenuText['es'] = ['MÁS POPULARIDAD', 'MÁS RECIENTE', 'MEJOR VALORACIÓN'];

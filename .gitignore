@@ -4,3 +4,6 @@
 *.dll
 *.so
 *.dylib
+
+whiteraven*
+wrserver*

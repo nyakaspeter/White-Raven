@@ -94,11 +94,11 @@ languageListText['bg'] = ['АВТОМАТИЧНО',
                         'ЛИТОВСКИ', 'НОРВЕЖКИ', 'ПЕРСИЙСКИ', 'ПОЛСКИ', 'ПОРТУГАЛСКИ', 'ПОРТУГАЛСКИ ( БР )', 'РУМЪНСКИ', 'РУСКИ', 'СРЪБСКИ',
                         'СЛОВАШКИ', 'ИСПАНСКИ', 'СУАХИЛИ', 'ШВЕДСКИ', 'ТАЙЛАНДСКИ', 'ТУРСКИ', 'УРДУ', 'ВИЕТНАМСКИ'];                      
 interfaceLangText['bg'] = ['АВТОМАТИЧНИ', 'БЪЛГАРСКИ', 'ХЪРВАТСКИ', 'АНГЛИЙСКИ', 'УНГАРСКИ', 'ИСПАНСКИ', 'СЛОВАШКИ', 'ИТАЛИАНСКИ'];
-movieSourceListText['bg'] = ['POPCORN TIME', 'YTS', 'RARBG', '1337X', 'POPCORN TIME ONLINE', 'ITORRENT'];
-tvSourceListText['bg'] = ['POPCORN TIME', 'EZTV', 'RARBG', '1337X'];
+movieSourceListText['bg'] = ['JACKETT', 'POPCORN TIME', 'YTS', 'RARBG', '1337X', 'POPCORN TIME ONLINE', 'ITORRENT'];
+tvSourceListText['bg'] = ['JACKETT', 'POPCORN TIME', 'EZTV', 'RARBG', '1337X', 'ITORRENT'];
 subtitleModeListText['bg'] = ['IMDB ID', 'FILE HASH'];
-downSpeedListText['bg'] = ['128 Kbps', '256 Kbps', '512 Kbps', '1024 Kbps', '2048 Kbps', '4096 Kbps', '8192 Kbps', 'НЕОГРАНИЧЕН'];
-upSpeedListText['bg'] = ['128 Kbps', '256 Kbps', '512 Kbps', '1024 Kbps', '2048 Kbps', '4096 Kbps', '8192 Kbps', 'НЕОГРАНИЧЕН'];
+downSpeedListText['bg'] = ['256 KB/s', '512 KB/s', '1 MB/s', '2 MB/s', '4 MB/s', '6 MB/s', '8 MB/s', 'НЕОГРАНИЧЕН'];
+upSpeedListText['bg'] = ['256 KB/s', '512 KB/s', '1 MB/s', '2 MB/s', '4 MB/s', '6 MB/s', '8 MB/s', 'ЗАБРАНИ'];
 genresMovieMenuText['bg'] = ['ВСИЧКИ', 'ЕКШЪН', 'ПРИКЛЮЧЕНСКИ', 'АНИМАЦИОНЕН', 'КОМЕДИЯ', 'КРИМИНАЛЕН', 'ДОКУМЕНТАЛЕН', 'ДРАМА', 'СЕМЕЕН', 'ФЕНТЪЗИ', 'ИСТОРИЧЕСКИ', 'УЖАСИ', 'МУЗИКАЛЕН', 'МИСТЕРИЯ', 'РОМАНТИЧЕН', 'НАУЧНО-ФАНТАСТИЧЕН', 'ТРИЛЪР', 'ВОЕНЕН', 'УЕСТЪРН'];
 genresTVMenuText['bg'] = ['AВСИЧКИ', 'ЕКШЪН & ПРИКЛЮЧЕНСКИ', 'АНИМАЦИОНЕН', 'КОМЕДИЯ', 'КРИМИНАЛЕН', 'ДОКУМЕНТАЛЕН', 'ДРАМА', 'СЕМЕЕН', 'ДЕТСКИ', 'МИСТЕРИЯ', 'НОВИНИ', 'РЕАЛИТИ', 'НАУЧНО-ФАНТАСТИЧЕН & ФЕНТЪЗИ', 'САПУНКА', 'РАЗГОВОР', 'ВОЕНЕН & ПОЛИТИЧЕСКИ', 'УЕСТЪРН'];
 sortMovieMenuText['bg'] = ['НАЙ-ПОПУЛАРНИ', 'НАЙ-СКОРОШНИ', 'НАЙ-ОЦЕНЕНИ'];

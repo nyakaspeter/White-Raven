@@ -94,11 +94,11 @@ languageListText['sk'] = ['AUTOMATICKÝ',
                         'LITVANSKY', 'NÓRSKY', 'PERZSKY', 'POĽSKY', 'PORTUGALSKY', 'PORTUGALSKY ( BR )', 'RUMUNSKY', 'RUSKY', 'SRBSKY',
                         'SLOVENSKÝ', 'ŠPANIELSKY', 'SWAHILI', 'ŠVEDSKY', 'THAJSKY', 'TURECKY', 'URDU', 'VIETNAMSKY'];
 interfaceLangText['sk'] = ['AUTOMATICKÝ', 'BULHARSKÝ', 'CHORVÁTSKY', 'ANGLICKÝ', 'MAĎARSKÝ', 'ŠPANIELSKY', 'SLOVENSKÝ', 'TALIANSKY'];
-movieSourceListText['sk'] = ['POPCORN TIME', 'YTS', 'RARBG', '1337X', 'POPCORN TIME ONLINE', 'ITORRENT'];
-tvSourceListText['sk'] = ['POPCORN TIME', 'EZTV', 'RARBG', '1337X'];
+movieSourceListText['sk'] = ['JACKETT', 'POPCORN TIME', 'YTS', 'RARBG', '1337X', 'POPCORN TIME ONLINE', 'ITORRENT'];
+tvSourceListText['sk'] = ['JACKETT', 'POPCORN TIME', 'EZTV', 'RARBG', '1337X', 'ITORRENT'];
 subtitleModeListText['sk'] = ['IMDB ID', 'SÚBOR HASH'];
-downSpeedListText['sk'] = ['128 Kbps', '256 Kbps', '512 Kbps', '1024 Kbps', '2048 Kbps', '4096 Kbps', '8192 Kbps', 'NEOBMEDZENÝ'];
-upSpeedListText['sk'] = ['128 Kbps', '256 Kbps', '512 Kbps', '1024 Kbps', '2048 Kbps', '4096 Kbps', '8192 Kbps', 'NEOBMEDZENÝ'];
+downSpeedListText['sk'] = ['256 KB/s', '512 KB/s', '1 MB/s', '2 MB/s', '4 MB/s', '6 MB/s', '8 MB/s', 'NEOBMEDZENÝ'];
+upSpeedListText['sk'] = ['256 KB/s', '512 KB/s', '1 MB/s', '2 MB/s', '4 MB/s', '6 MB/s', '8 MB/s', 'ZAKÁZANÉ'];
 genresMovieMenuText['sk'] = ['VŠETKY ŽÁNRE', 'AKCIA', 'DOBRODRUŽSTVO', 'ANIMÁCIA', 'KOMÉDIA', 'KRIMINALITA', 'DOKUMENTÁRNY', 'DRÁMA', 'RODINA', 'FANTÁZIA', 'HISTÓRIA', 'HOROR', 'HUDBA', 'TAJOMSTVO', 'ROMANTIKA', 'SCI-FI', 'THRILLER', 'VOJNOVÝ', 'WESTERN'];
 genresTVMenuText['sk'] = ['VŠETKY ŽÁNRE', 'AKCIA & DOBRODRUŽSTVO', 'ANIMÁCIA', 'KOMÉDIA', 'KRIMINALITA', 'DOKUMENTÁRNY', 'DRÁMA', 'RODINA', 'DETI', 'TAJOMSTVO', 'SPRÁVY', 'REALITA', 'SCI-FI & FANTÁZIA', 'TELENOVELA', 'ROZHOVOR', 'VOJNOVÝ & POLITICKÝ', 'WESTERN'];
 sortMovieMenuText['sk'] = ['NAJOBĽÚBENEJŠIE', 'NEDÁVNO VYDANÉ', 'NAJVYŠŠIE HODNOTENÉ'];
