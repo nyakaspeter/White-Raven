@@ -103,7 +103,7 @@ go run build.go rootless
 <details>
 <summary>Building the rooted version</summary>
 
-First you have to [download](https://github.com/nyakaspeter/White-Raven-Server/releases) or [build](https://github.com/nyakaspeter/White-Raven-Server#build-instructions) the server binary and place it in the project directory, then run:
+First you have to [download](https://github.com/nyakaspeter/White-Raven-Server/releases) or [build](https://github.com/nyakaspeter/White-Raven-Server#build-instructions) the ARM version server binary and place it in the project directory, then run:
 ```
 go run build.go rooted -serverfile="wrserver"
 ```
