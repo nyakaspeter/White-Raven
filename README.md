@@ -31,7 +31,9 @@
 
 ![Screenshot](https://camo.githubusercontent.com/3cc130756ebb28b2f934c412a28b98d5e59cb4f94760a6c4324e895a024231f9/68747470733a2f2f692e6962622e636f2f6e3150363350372f696e73657474696e67732e6a7067)
 
-## Running the server on the television
+## How to use
+
+### Running the server on the television
 
 If you have a rooted E, F, or H series Samsung Smart TV, you can run both the client and the server simultaneously on your television. For this you have to [download](https://github.com/nyakaspeter/whiteraven/releases) the root version of White Raven.
 
@@ -47,7 +49,7 @@ If you have a rooted E, F, or H series Samsung Smart TV, you can run both the cl
 
 </details>
 
-## Running the server on your local network
+### Running the server on your local network
 
 If you don't have root on your television or just don't want to run the server on the TV, you can also run it from another device on your local network. For this you have to [download](https://github.com/nyakaspeter/whiteraven/releases) the rootless version of White Raven and run [White Raven Server](https://github.com/nyakaspeter/White-Raven-Server) separately.
 
