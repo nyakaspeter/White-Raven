@@ -550,7 +550,6 @@ function StartStopWRServer(command) {
             	} else {
 		            document.getElementById("loaDing").style.visibility = "hidden";
 		            document.getElementById("loaDing").className = "loaderoff";
-		            StopRavenEyeAnimation();
 		            widgetAPI.putInnerHTML(document.getElementById("noConnection"), serverNotFoundText[lang]);
 		            document.getElementById("noConnection").style.visibility = "visible";
 		        
@@ -621,7 +620,6 @@ function IsTheServerStarted() {
             } else {                
                 document.getElementById("loaDing").style.visibility = "hidden";
                 document.getElementById("loaDing").className = "loaderoff";
-                StopRavenEyeAnimation();
                 if (isRooted == true) {
                     widgetAPI.putInnerHTML(document.getElementById("noConnection"), serverNotStartedText[lang]);
                 } else {
@@ -648,7 +646,6 @@ function IsTheServerStarted() {
             
             document.getElementById("loaDing").style.visibility = "hidden";
             document.getElementById("loaDing").className = "loaderoff";
-            StopRavenEyeAnimation();
             if (isRooted == true) {
                 widgetAPI.putInnerHTML(document.getElementById("noConnection"), serverNotStartedText[lang]);
             } else {
@@ -1330,12 +1327,6 @@ function SetZIndex(state, number) {
     document.getElementById("waitscreen").style.visibility = state;
 }
 
-function StopRavenEyeAnimation() {
-	var raveneye = document.getElementById("raveneye");
-	raveneye.style.animation = "none";
-	raveneye.style.webkitAnimation = "none";
-}
-
 function StartOrStopWithLogo(state) {
     if (state == "start") {
         waiting = true;
@@ -1344,9 +1335,6 @@ function StartOrStopWithLogo(state) {
         var imgBackground = document.createElement("img");
         imgBackground.onload = function() {
             document.getElementById("OverlayVideoPlayerFull").style.backgroundImage = "url('images/splash.jpg')";
-            document.getElementById("raveneye").style.visibility = "visible";
-            widgetAPI.putInnerHTML(document.getElementById("splashtext"), splashText[lang]);
-            document.getElementById("splashtitle").style.visibility = "visible";
             document.getElementById("OverlayVideoPlayerFull").style.visibility = "visible";
             document.getElementById("SceneVideoPlayerFull").style.visibility = "visible";
         }
@@ -1357,20 +1345,7 @@ function StartOrStopWithLogo(state) {
     } else if (state == "refresh") {
         waiting = true;
         widgetAPI.putInnerHTML(document.getElementById("SettingsText"), loadingText[lang]);
-
-        var raveneye = document.getElementById("raveneye");
-        raveneye.style.animation = "none";
-        raveneye.style.webkitAnimation = "none";
-        raveneye.offsetHeight; // trigger reflow
-        raveneye.style.animation = null;
-        raveneye.style.webkitAnimation = null;
-        raveneye.style.visibility = "visible";
     } else {
-        var raveneye = document.getElementById("raveneye");
-        raveneye.style.animation = "none";
-        raveneye.style.webkitAnimation = "none";
-        raveneye.style.visibility = "hidden";
-        document.getElementById("splashtitle").style.visibility = "hidden";
         document.getElementById("OverlayVideoPlayerFull").style.backgroundImage = "url('images/background.jpg')";
     }
 }
@@ -1528,7 +1503,6 @@ function GetMovieInfo(qtype, type, cpage, typedtext) {
                             }
                             document.getElementById("loaDing").style.visibility = "hidden";
                             document.getElementById("loaDing").className = "loaderoff";
-                            StopRavenEyeAnimation();
                             document.getElementById("noConnection").style.visibility = "visible";
 
                             //reqSuccess = true;
@@ -1577,7 +1551,6 @@ function GetMovieInfo(qtype, type, cpage, typedtext) {
                     }
                     document.getElementById("loaDing").style.visibility = "hidden";
                     document.getElementById("loaDing").className = "loaderoff";
-                    StopRavenEyeAnimation();
                     document.getElementById("noConnection").style.visibility = "visible";
 
                     //reqSuccess = true;
@@ -2144,7 +2117,6 @@ SceneMain.prototype.handleKeyDown = function(keyCode){
 			            	} else {
 					            document.getElementById("loaDing").style.visibility = "hidden";
 					            document.getElementById("loaDing").className = "loaderoff";
-					            StopRavenEyeAnimation();
 					            widgetAPI.putInnerHTML(document.getElementById("noConnection"), serverNotFoundText[lang]);
 					            document.getElementById("noConnection").style.visibility = "visible";
 					        

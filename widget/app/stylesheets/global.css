@@ -1301,24 +1301,6 @@ img {
   animation: none !important;
 }
 
-#raveneye {
-  border-radius: 50%;
-  border: 2px solid #e02b2b;
-  top: 150px;
-  left: 640px; /* 639 */
-  width: 5px;  /* 6 */
-  height: 6px;
-  text-align: center;
-  position: absolute;
-  -webkit-animation: glow-animation 2s ease;
-  animation: glow-animation 2s ease;
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-  /*background-color: #e02b2b;*/
-  background: rgba(224, 43, 43, 0.4);
-  visibility: hidden;
-}
-
 @-webkit-keyframes glow-animation {
   0% {
     box-shadow: 0 0 #ff0000;
@@ -1336,30 +1318,6 @@ img {
     box-shadow: 0 0 10px 10px transparent;
     border-width: 2px;
   }
-}
-
-#splashtitle {
-  font-family: 'Oswald', sans-serif;
-  font-size: 71px;
-  font-weight: bold;
-  text-align: center;
-  color: transparent;
-  position: absolute;
-  top: 134px; /*96*/
-  left: 660px;
-  visibility: hidden;
-  text-shadow: 0 0 1px rgba(255,255,255,0.8);
-  line-height: 114%;
-}
-
-#splashtext {
-  font-family: 'Oswald', sans-serif;
-  font-size: 26px;
-  font-weight: bold;
-  text-align: center;
-  color: transparent;
-  text-shadow: 0 0 1px rgba(255,255,255,0.8);
-  line-height: 120%;
 }
 
 #OverlayMenuInfo {
