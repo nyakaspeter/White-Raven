@@ -549,8 +549,18 @@ SceneInfoPage.prototype.GetMovieInfo = function(tmdbid) {
     //xhr.withCredentials = true;
 
     xhr.addEventListener("readystatechange", function () {
-      if (xhr.readyState == 4 && xhr.status == 200) {
-        var dataobject = JSON.parse(xhr.responseText).results[0];
+      if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 404)) {
+        var dataobject = {
+            title: wrapData[position].title,
+            poster_path: "dummy.jpg",
+            backdrop_path: "dummy.jpg",
+            genres: [],
+            imdb_id: 0
+        };
+        
+        if (xhr.status == 200) {
+            dataobject = JSON.parse(xhr.responseText).results[0];
+        } 
 
         var poster = document.getElementById('poster');
         poster.src = w185src + dataobject.poster_path;
@@ -648,10 +658,25 @@ SceneInfoPage.prototype.GetSerieInfo = function(tmdbid) {
     //xhr.withCredentials = true;
 
     xhr.addEventListener("readystatechange", function () {
-        if (xhr.readyState == 4 && xhr.status == 200) {
+        if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 404)) {
             reqMainSuccess = true;
 
-            var dataobject = JSON.parse(xhr.responseText).results[0];
+            var dataobject = {
+                title: wrapData[position].title,
+                poster_path: "dummy.jpg",
+                backdrop_path: "dummy.jpg",
+                genres: [],
+                imdb_id: 0,
+                external_ids: {
+                    imdb_id: 0,
+                    tvdb_id: 0,
+                },
+                seasons: []
+            };
+            
+            if (xhr.status == 200) {
+                dataobject = JSON.parse(xhr.responseText).results[0];
+            }
 
             var poster = document.getElementById('poster');
             poster.src = w185src + dataobject.poster_path;
@@ -746,42 +771,46 @@ SceneInfoPage.prototype.GetTVMazeInfo = function(tvdb, imdb) {
     //xhr.withCredentials = true;
 
     xhr.addEventListener("readystatechange", function () {
-      if (xhr.readyState == 4 && xhr.status == 200) {
-        var dataobject = JSON.parse(xhr.responseText).results;
+      if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 404)) {
+        var dataobject = [{season: 0, number: 0, airdate: "0"}];
 
-        // Sort episodes by episode number
-        dataobject.sort(function(a, b) {
-            if (a.number < b.number) {
-                return -1;
-            } else if (a.number > b.number) {
-                return 1;
-            }
-            return 0;
-        });
+        if (xhr.status == 200) {
+            dataobject = JSON.parse(xhr.responseText).results;
 
-        // Sort episodes by season number
-        dataobject.sort(function(a, b) {
-            if (a.season < b.season) {
-                return -1;
-            } else if (a.season > b.season) {
-                return 1;
-            }
-            return 0;
-        });
-
-        // Add S00E00 and E00 to the beginning of each season (for season/series pack search)
-        var lastAddedSeason = 0;
-        var episodesWithWildcards = [{season: 0, number: 0, airdate: "0"}];
-        for (var i=0; i<dataobject.length; i++) {
-            if (dataobject[i].airdate) {
-                if (dataobject[i].season !== lastAddedSeason) {
-                    episodesWithWildcards.push({season: dataobject[i].season, number: 0, airdate: dataobject[i].airdate});
+            // Sort episodes by episode number
+            dataobject.sort(function(a, b) {
+                if (a.number < b.number) {
+                    return -1;
+                } else if (a.number > b.number) {
+                    return 1;
                 }
-                episodesWithWildcards.push(dataobject[i]);
-                lastAddedSeason = dataobject[i].season;
+                return 0;
+            });
+
+            // Sort episodes by season number
+            dataobject.sort(function(a, b) {
+                if (a.season < b.season) {
+                    return -1;
+                } else if (a.season > b.season) {
+                    return 1;
+                }
+                return 0;
+            });
+
+            // Add S00E00 and E00 to the beginning of each season (for season/series pack search)
+            var lastAddedSeason = 0;
+            var episodesWithWildcards = [{season: 0, number: 0, airdate: "0"}];
+            for (var i=0; i<dataobject.length; i++) {
+                if (dataobject[i].airdate) {
+                    if (dataobject[i].season !== lastAddedSeason) {
+                        episodesWithWildcards.push({season: dataobject[i].season, number: 0, airdate: dataobject[i].airdate});
+                    }
+                    episodesWithWildcards.push(dataobject[i]);
+                    lastAddedSeason = dataobject[i].season;
+                }
             }
+            dataobject = episodesWithWildcards;
         }
-        dataobject = episodesWithWildcards;
 
         var maxIndex = dataobject.length;
         

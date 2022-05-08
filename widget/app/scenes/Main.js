@@ -5,7 +5,7 @@
 var serverIP = "127.0.0.1";
 
 // Current version
-var version = "0.5.1";
+var version = "0.6.0";
 
 // Detect TV IP address
 var network = document.getElementById('networkplugin');
@@ -596,7 +596,7 @@ function IsTheServerStarted() {
         if (this.status == 200) {
             reqStartSuccess = true;
             var dataobject = JSON.parse(this.responseText);
-            if ((dataobject) && (dataobject.message.indexOf("White Raven Server v") != -1)) {
+            if ((dataobject) && (dataobject.success)) {
                 alert("[White Raven] Server started: " + dataobject.message);
                 SERVER_OK = true;
                 widgetAPI.putInnerHTML(document.getElementById("playbutton"), playButtonText[lang]);
@@ -672,7 +672,7 @@ function IsTheServerStillRunning(fn) {
         if (this.status == 200) {
             reqStartSuccess = true;
             var dataobject = JSON.parse(this.responseText);
-            if ((dataobject) && (dataobject.message.indexOf("White Raven Server v" + version) != -1)) {
+            if ((dataobject) && (dataobject.success)) {
                 fn(true);
             } else {
                 fn(false);
@@ -1363,15 +1363,39 @@ function GetMovieInfo(qtype, type, cpage, typedtext) {
 
     xhr.addEventListener("readystatechange", function () {
       if (this.readyState == 4) {
-        if (this.status == 200) {
+        if (this.status == 200 || this.status == 404) {
             reqSuccess = true;
             alert("[White Raven] Tmdb data received");
-            
-            var dataobject = JSON.parse(this.responseText.replace(/\"name\"/g,"\"title\"")).results[0];
+
+            var response = JSON.parse(this.responseText.replace(/\"name\"/g,"\"title\""));
+            var dataobject = response.results ? response.results[0] : {};
             
             var maxIndex = 0;
             if (dataobject.results) {
                 maxIndex = dataobject.results.length;
+            }
+
+            // Add dummy object for title based torrent search if not found on TMDB
+            if (maxIndex == 0 && qtype == "search" && type == "silent") {
+                maxIndex = 2;
+                dataobject.page = 1;
+                dataobject.total_pages = 1;
+                dataobject.total_results = 2;
+                dataobject.results = [];
+                dataobject.results.push({
+                    title: typedtext + " (movie)",
+                    original_title: typedtext,
+                    id: 0,
+                    poster_path: "dummymovie.jpg",
+                    release_date: "0000-00-00"
+                });
+                dataobject.results.push({
+                    title: typedtext + " (tv)",
+                    original_name: typedtext,
+                    id: 0,
+                    poster_path: "dummyshow.jpg",
+                    first_air_date: "0000-00-00"
+                });
             }
 
             if (maxIndex > 0) {
