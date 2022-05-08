@@ -155,7 +155,7 @@ var interfaceLangText = {};
 interfaceLangText['shortcode'] = ['auto', 'bg', 'hr', 'en', 'hu', 'es', 'sk', 'it'];
 
 var movieSourceListText = {};
-movieSourceListText['name'] = ['jackett', 'pt', 'yts', 'rarbg', '1337x', 'pto', 'itorrent'];
+movieSourceListText['name'] = ['jackett', 'pt', 'yts', 'rarbg', '1337x', 'itorrent'];
 
 var tvSourceListText = {};
 tvSourceListText['name'] = ['jackett', 'pt', 'eztv', 'rarbg', '1337x', 'itorrent'];
@@ -760,7 +760,6 @@ function SaveDefaultTemp() {
         saveSettings['moviesource_yts'] = "true";
         saveSettings['moviesource_rarbg'] = "false";
         saveSettings['moviesource_1337x'] = "true";
-        saveSettings['moviesource_pto'] = "false";
         saveSettings['moviesource_itorrent'] = "false";
         saveSettings['tvsource_jackett'] = "true";
         saveSettings['tvsource_pt'] = "true";
@@ -789,7 +788,6 @@ function SaveDefaultTemp() {
         saveSettings['moviesource_yts'] = "true";
         saveSettings['moviesource_rarbg'] = "false";
         saveSettings['moviesource_1337x'] = "true";
-        saveSettings['moviesource_pto'] = "false";
         saveSettings['moviesource_itorrent'] = "false";
         saveSettings['tvsource_jackett'] = "true";
         saveSettings['tvsource_pt'] = "true";
@@ -840,7 +838,6 @@ function CreateOrLoadTemp() {
         saveSettings['moviesource_yts'] = sf.core.localData('moviesource_yts');
         saveSettings['moviesource_rarbg'] = sf.core.localData('moviesource_rarbg');
         saveSettings['moviesource_1337x'] = sf.core.localData('moviesource_1337x');
-        saveSettings['moviesource_pto'] = sf.core.localData('moviesource_pto');
         saveSettings['moviesource_itorrent'] = sf.core.localData('moviesource_itorrent');
         saveSettings['tvsource_jackett'] = sf.core.localData('tvsource_jackett');
         saveSettings['tvsource_pt'] = sf.core.localData('tvsource_pt');
@@ -896,7 +893,6 @@ function SaveTemp() {
         sf.core.localData('moviesource_yts', saveSettings['moviesource_yts']);
         sf.core.localData('moviesource_rarbg', saveSettings['moviesource_rarbg']);
         sf.core.localData('moviesource_1337x', saveSettings['moviesource_1337x']);
-        sf.core.localData('moviesource_pto', saveSettings['moviesource_pto']);
         sf.core.localData('moviesource_itorrent', saveSettings['moviesource_itorrent']);        
         sf.core.localData('tvsource_jackett', saveSettings['tvsource_jackett']);
         sf.core.localData('tvsource_pt', saveSettings['tvsource_pt']);
@@ -925,7 +921,6 @@ function SaveTemp() {
         sf.core.localData('moviesource_yts', saveSettings['moviesource_yts']);
         sf.core.localData('moviesource_rarbg', saveSettings['moviesource_rarbg']);
         sf.core.localData('moviesource_1337x', saveSettings['moviesource_1337x']);
-        sf.core.localData('moviesource_pto', saveSettings['moviesource_pto']);
         sf.core.localData('moviesource_itorrent', saveSettings['moviesource_itorrent']);        
         sf.core.localData('tvsource_jackett', saveSettings['tvsource_jackett']);
         sf.core.localData('tvsource_pt', saveSettings['tvsource_pt']);
@@ -967,7 +962,6 @@ function RestoreDefaultTemp() {
             saveSettings['moviesource_yts'] = "true";
             saveSettings['moviesource_rarbg'] = "false";
             saveSettings['moviesource_1337x'] = "true";
-            saveSettings['moviesource_pto'] = "false";
             saveSettings['moviesource_itorrent'] = "false";
             saveSettings['tvsource_jackett'] = "true";
             saveSettings['tvsource_pt'] = "true";
@@ -996,7 +990,6 @@ function RestoreDefaultTemp() {
             saveSettings['moviesource_yts'] = "true";
             saveSettings['moviesource_rarbg'] = "false";
             saveSettings['moviesource_1337x'] = "true";
-            saveSettings['moviesource_pto'] = "false";
             saveSettings['moviesource_itorrent'] = "false";
             saveSettings['tvsource_jackett'] = "true";
             saveSettings['tvsource_pt'] = "true";

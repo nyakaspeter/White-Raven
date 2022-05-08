@@ -71,7 +71,7 @@ var aboutInfoText = { bg: 'ГЛЕДАЙТЕ ФИЛМИ И ТВ ШОУ ОТ ТО�
                     '<DL><DT>ФИЛМИ И ТВ ШОУ ПРАГРАМИ</DT>' + 
                     '<DD>THE MOVIE DB, TVMAZE</DD>' +
                     '<DT>TORRENT</DT>' +
-                    '<DD>POPCORN TIME, YTS, EZTV, RARBG, 1337X, PTO, ITORRENT</DD>' +
+                    '<DD>POPCORN TIME, YTS, EZTV, RARBG, 1337X, ITORRENT</DD>' +
                     '<DT>СУБТИТРИ</DT>' +
                     '<DD>OPENSUBTITLES</DD></DL>' };
 var aboutFooterText = { bg: 'ВЕРСИЯ: ' + version + '</BR>GITHUB.COM/SILENTMURDOCK' };
@@ -94,7 +94,7 @@ languageListText['bg'] = ['АВТОМАТИЧНО',
                         'ЛИТОВСКИ', 'НОРВЕЖКИ', 'ПЕРСИЙСКИ', 'ПОЛСКИ', 'ПОРТУГАЛСКИ', 'ПОРТУГАЛСКИ ( БР )', 'РУМЪНСКИ', 'РУСКИ', 'СРЪБСКИ',
                         'СЛОВАШКИ', 'ИСПАНСКИ', 'СУАХИЛИ', 'ШВЕДСКИ', 'ТАЙЛАНДСКИ', 'ТУРСКИ', 'УРДУ', 'ВИЕТНАМСКИ'];                      
 interfaceLangText['bg'] = ['АВТОМАТИЧНИ', 'БЪЛГАРСКИ', 'ХЪРВАТСКИ', 'АНГЛИЙСКИ', 'УНГАРСКИ', 'ИСПАНСКИ', 'СЛОВАШКИ', 'ИТАЛИАНСКИ'];
-movieSourceListText['bg'] = ['JACKETT', 'POPCORN TIME', 'YTS', 'RARBG', '1337X', 'POPCORN TIME ONLINE', 'ITORRENT'];
+movieSourceListText['bg'] = ['JACKETT', 'POPCORN TIME', 'YTS', 'RARBG', '1337X', 'ITORRENT'];
 tvSourceListText['bg'] = ['JACKETT', 'POPCORN TIME', 'EZTV', 'RARBG', '1337X', 'ITORRENT'];
 subtitleModeListText['bg'] = ['IMDB ID', 'FILE HASH'];
 downSpeedListText['bg'] = ['256 KB/s', '512 KB/s', '1 MB/s', '2 MB/s', '4 MB/s', '6 MB/s', '8 MB/s', 'НЕОГРАНИЧЕН'];
