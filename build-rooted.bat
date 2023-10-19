@@ -1,1 +1,1 @@
-go run build.go rooted -serverfile="raven"
+go run build/build.go rooted -serverfile="build/raven"

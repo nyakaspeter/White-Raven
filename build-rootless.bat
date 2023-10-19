@@ -1,1 +1,1 @@
-go run build.go rootless
+go run build/build.go rootless

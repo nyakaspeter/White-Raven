@@ -47,7 +47,7 @@ SceneMultiVideo.prototype.handleShow = function (videodata) {
 };
 
 SceneMultiVideo.prototype.handleHide = function () {
-    $.ajax({ url: 'http://' + serverIP + ':9000/api/deleteall', success: function(result) {}});
+    $.ajax({ url: 'http://' + serverIP + ':9000/api/v0/deleteall', success: function(result) {}});
 
 	document.getElementById('OverlayMultiVideo').style.visibility = "hidden";
     document.getElementById('OverlayMultiVideo').style.height = 0;

@@ -55,7 +55,7 @@ SceneResumeMenu.prototype.handleHide = function () {
     document.getElementById("waitscreen").style.display = "initial";
 
     if (this.resumedata.caller == "HostsMenu") {
-        $.ajax({ url: 'http://' + serverIP + ':9000/api/deleteall', success: function(result) {}});
+        $.ajax({ url: 'http://' + serverIP + ':9000/api/v0/deleteall', success: function(result) {}});
 
         document.getElementById('poster').className = "posterBasic";
         document.getElementById('OverlayHostsMenu').style.visibility = "visible";
@@ -63,7 +63,7 @@ SceneResumeMenu.prototype.handleHide = function () {
         widgetAPI.putInnerHTML(document.getElementById('menuinfo'), this.prevdata);
         sf.scene.focus('HostsMenu');
     } else if (this.resumedata.caller == "ReceiverPage") {
-        $.ajax({ url: 'http://' + serverIP + ':9000/api/deleteall', success: function(result) {}});
+        $.ajax({ url: 'http://' + serverIP + ':9000/api/v0/deleteall', success: function(result) {}});
 
         widgetAPI.putInnerHTML(document.getElementById("noConnection"), receiverText[lang] + "HTTP://" + serverIP + ":9000");
         document.getElementById("noConnection").style.visibility = "visible";

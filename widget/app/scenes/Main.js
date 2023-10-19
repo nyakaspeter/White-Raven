@@ -155,10 +155,10 @@ var interfaceLangText = {};
 interfaceLangText['shortcode'] = ['auto', 'bg', 'hr', 'en', 'hu', 'es', 'sk', 'it'];
 
 var movieSourceListText = {};
-movieSourceListText['name'] = ['jackett', 'pt', 'yts', 'rarbg', '1337x', 'itorrent'];
+movieSourceListText['name'] = ['jackett', 'yts', '1337x', 'itorrent'];
 
 var tvSourceListText = {};
-tvSourceListText['name'] = ['jackett', 'pt', 'eztv', 'rarbg', '1337x', 'itorrent'];
+tvSourceListText['name'] = ['jackett', 'eztv', '1337x', 'itorrent'];
 
 var subtitleModeListText = {};
 subtitleModeListText['name'] = ['imdb', 'hash'];
@@ -476,7 +476,7 @@ function FindLocalServer(fn) {
             }
         }
 
-        xhttp.open("GET", "http://" + networkAddress + hostsArray[i] + ":9000/api/about", true);
+        xhttp.open("GET", "http://" + networkAddress + hostsArray[i] + ":9000/api/v0/about", true);
         xhttp.send();
         xhttpArray.push(xhttp);
     }
@@ -519,7 +519,7 @@ function StartStopWRServer(command) {
     // if (command == "osstop") // Set command check value to "osstop" to request os.SIGINT server stop
     if (command == "stop") {
         alert("[White Raven] EXIT key pressed and stopped the application.");
-        xhr.open("GET", "http://" + serverIP + ":9000/api/stop");
+        xhr.open("GET", "http://" + serverIP + ":9000/api/v0/stop");
         xhr.send();
     } else if (command == "test") {
     	//SetWaitAndZIndex("visible", 100);
@@ -635,8 +635,8 @@ function IsTheServerStarted() {
       }
     });
 
-    alert("[White Raven] Check if the server started: http://" + serverIP + ":9000/api/about");
-    xhr.open("GET", "http://" + serverIP + ":9000/api/about");
+    alert("[White Raven] Check if the server started: http://" + serverIP + ":9000/api/v0/about");
+    xhr.open("GET", "http://" + serverIP + ":9000/api/v0/about");
     xhr.send();
 
     setTimeout(function() {
@@ -681,7 +681,7 @@ function IsTheServerStillRunning(fn) {
       }
     });
 
-    xhr.open("GET", "http://" + serverIP + ":9000/api/about");
+    xhr.open("GET", "http://" + serverIP + ":9000/api/v0/about");
     xhr.send();
 
     setTimeout(function() {
@@ -715,7 +715,7 @@ function RestartServer(state) {
       }
     });
 
-    xhr.open("GET", "http://" + serverIP + ":9000/api/restart/downrate/" + saveSettings['downspeed'] + "/uprate/" + saveSettings['upspeed']);
+    xhr.open("GET", "http://" + serverIP + ":9000/api/v0/restart/downrate/" + saveSettings['downspeed'] + "/uprate/" + saveSettings['upspeed']);
     xhr.send();
 
     setTimeout(function() {
@@ -756,15 +756,11 @@ function SaveDefaultTemp() {
         saveSettings['interface'] = lang;
         saveSettings['database'] = lang;
         saveSettings['moviesource_jackett'] = "true";
-        saveSettings['moviesource_pt'] = "true";
         saveSettings['moviesource_yts'] = "true";
-        saveSettings['moviesource_rarbg'] = "false";
         saveSettings['moviesource_1337x'] = "true";
         saveSettings['moviesource_itorrent'] = "false";
         saveSettings['tvsource_jackett'] = "true";
-        saveSettings['tvsource_pt'] = "true";
         saveSettings['tvsource_eztv'] = "true";
-        saveSettings['tvsource_rarbg'] = "false";
         saveSettings['tvsource_1337x'] = "true";
         saveSettings['tvsource_itorrent'] = "false";
         saveSettings['issubtitleenabled'] = "true";
@@ -784,15 +780,11 @@ function SaveDefaultTemp() {
         saveSettings['interface'] = "en";
         saveSettings['database'] = "en";
         saveSettings['moviesource_jackett'] = "true";
-        saveSettings['moviesource_pt'] = "true";
         saveSettings['moviesource_yts'] = "true";
-        saveSettings['moviesource_rarbg'] = "false";
         saveSettings['moviesource_1337x'] = "true";
         saveSettings['moviesource_itorrent'] = "false";
         saveSettings['tvsource_jackett'] = "true";
-        saveSettings['tvsource_pt'] = "true";
         saveSettings['tvsource_eztv'] = "true";
-        saveSettings['tvsource_rarbg'] = "false";
         saveSettings['tvsource_1337x'] = "true";
         saveSettings['tvsource_itorrent'] = "false";
         saveSettings['issubtitleenabled'] = "true";
@@ -834,15 +826,11 @@ function CreateOrLoadTemp() {
         saveSettings['interface'] = sf.core.localData('interface');
         saveSettings['database'] = sf.core.localData('database');
         saveSettings['moviesource_jackett'] = sf.core.localData('moviesource_jackett');
-        saveSettings['moviesource_pt'] = sf.core.localData('moviesource_pt');
         saveSettings['moviesource_yts'] = sf.core.localData('moviesource_yts');
-        saveSettings['moviesource_rarbg'] = sf.core.localData('moviesource_rarbg');
         saveSettings['moviesource_1337x'] = sf.core.localData('moviesource_1337x');
         saveSettings['moviesource_itorrent'] = sf.core.localData('moviesource_itorrent');
         saveSettings['tvsource_jackett'] = sf.core.localData('tvsource_jackett');
-        saveSettings['tvsource_pt'] = sf.core.localData('tvsource_pt');
         saveSettings['tvsource_eztv'] = sf.core.localData('tvsource_eztv');
-        saveSettings['tvsource_rarbg'] = sf.core.localData('tvsource_rarbg');
         saveSettings['tvsource_1337x'] = sf.core.localData('tvsource_1337x');
         saveSettings['tvsource_itorrent'] = sf.core.localData('tvsource_itorrent');
         saveSettings['issubtitleenabled'] = sf.core.localData('issubtitleenabled');
@@ -889,15 +877,11 @@ function SaveTemp() {
         sf.core.localData('interface', saveSettings['interface']);
         sf.core.localData('database', saveSettings['database']);
         sf.core.localData('moviesource_jackett', saveSettings['moviesource_jackett']);
-        sf.core.localData('moviesource_pt', saveSettings['moviesource_pt']);
         sf.core.localData('moviesource_yts', saveSettings['moviesource_yts']);
-        sf.core.localData('moviesource_rarbg', saveSettings['moviesource_rarbg']);
         sf.core.localData('moviesource_1337x', saveSettings['moviesource_1337x']);
         sf.core.localData('moviesource_itorrent', saveSettings['moviesource_itorrent']);        
         sf.core.localData('tvsource_jackett', saveSettings['tvsource_jackett']);
-        sf.core.localData('tvsource_pt', saveSettings['tvsource_pt']);
         sf.core.localData('tvsource_eztv', saveSettings['tvsource_eztv']);
-        sf.core.localData('tvsource_rarbg', saveSettings['tvsource_rarbg']);
         sf.core.localData('tvsource_1337x', saveSettings['tvsource_1337x']);
         sf.core.localData('tvsource_itorrent', saveSettings['tvsource_itorrent']);
         sf.core.localData('issubtitleenabled', saveSettings['issubtitleenabled']);
@@ -917,15 +901,11 @@ function SaveTemp() {
         sf.core.localData('interface', saveSettings['interface']);
         sf.core.localData('database', saveSettings['database']);
         sf.core.localData('moviesource_jackett', saveSettings['moviesource_jackett']);
-        sf.core.localData('moviesource_pt', saveSettings['moviesource_pt']);
         sf.core.localData('moviesource_yts', saveSettings['moviesource_yts']);
-        sf.core.localData('moviesource_rarbg', saveSettings['moviesource_rarbg']);
         sf.core.localData('moviesource_1337x', saveSettings['moviesource_1337x']);
         sf.core.localData('moviesource_itorrent', saveSettings['moviesource_itorrent']);        
         sf.core.localData('tvsource_jackett', saveSettings['tvsource_jackett']);
-        sf.core.localData('tvsource_pt', saveSettings['tvsource_pt']);
         sf.core.localData('tvsource_eztv', saveSettings['tvsource_eztv']);
-        sf.core.localData('tvsource_rarbg', saveSettings['tvsource_rarbg']);
         sf.core.localData('tvsource_1337x', saveSettings['tvsource_1337x']);
         sf.core.localData('tvsource_itorrent', saveSettings['tvsource_itorrent']);
         sf.core.localData('issubtitleenabled', saveSettings['issubtitleenabled']);
@@ -958,15 +938,11 @@ function RestoreDefaultTemp() {
             saveSettings['interface'] = lang;
             saveSettings['database'] = lang;
             saveSettings['moviesource_jackett'] = "true";
-            saveSettings['moviesource_pt'] = "true";
             saveSettings['moviesource_yts'] = "true";
-            saveSettings['moviesource_rarbg'] = "false";
             saveSettings['moviesource_1337x'] = "true";
             saveSettings['moviesource_itorrent'] = "false";
             saveSettings['tvsource_jackett'] = "true";
-            saveSettings['tvsource_pt'] = "true";
             saveSettings['tvsource_eztv'] = "true";
-            saveSettings['tvsource_rarbg'] = "false";
             saveSettings['tvsource_1337x'] = "true";
             saveSettings['tvsource_itorrent'] = "false";
             saveSettings['issubtitleenabled'] = "true";
@@ -986,15 +962,11 @@ function RestoreDefaultTemp() {
             saveSettings['interface'] = "en";
             saveSettings['database'] = "en";
             saveSettings['moviesource_jackett'] = "true";
-            saveSettings['moviesource_pt'] = "true";
             saveSettings['moviesource_yts'] = "true";
-            saveSettings['moviesource_rarbg'] = "false";
             saveSettings['moviesource_1337x'] = "true";
             saveSettings['moviesource_itorrent'] = "false";
             saveSettings['tvsource_jackett'] = "true";
-            saveSettings['tvsource_pt'] = "true";
             saveSettings['tvsource_eztv'] = "true";
-            saveSettings['tvsource_rarbg'] = "false";
             saveSettings['tvsource_1337x'] = "true";
             saveSettings['tvsource_itorrent'] = "false";
             saveSettings['issubtitleenabled'] = "true";
@@ -1082,7 +1054,7 @@ function UpdatePosterAndBackdropPath(tempId, tempType) {
     var dbpos = languageListText['shortcode'].indexOf(saveSettings['database']);
     
     $.ajax({
-        url: "http://" + serverIP + ":9000/api/tmdbinfo/type/" + tempType + "/tmdbid/" + tempId + "/lang/" + languageListText['tmdbcode'][dbpos],
+        url: "http://" + serverIP + ":9000/api/v0/tmdbinfo/type/" + tempType + "/tmdbid/" + tempId + "/lang/" + languageListText['tmdbcode'][dbpos],
         type: "GET",
         dataType: "json",
         timeout: 5000,
@@ -1361,7 +1333,7 @@ function GetMovieInfo(qtype, type, cpage, typedtext) {
             alert("[White Raven] Tmdb data received");
 
             var response = JSON.parse(this.responseText.replace(/\"name\"/g,"\"title\""));
-            var dataobject = response.results ? response.results[0] : {};
+            var dataobject = response.results ? response.results : {};
             
             var maxIndex = 0;
             if (dataobject.results) {
@@ -1537,13 +1509,13 @@ function GetMovieInfo(qtype, type, cpage, typedtext) {
     var dbpos = languageListText['shortcode'].indexOf(saveSettings['database']);
 
     if (qtype != "search") {
-        alert("[White Raven] Tmdb request: http://" + serverIP + ":9000/api/tmdbdiscover/type/" + qtype + "/genretype/" + genretype + "/sort/" + sortby + "/date/" + ptoday + "/lang/" + languageListText['tmdbcode'][dbpos] + "/page/" + cpage);
-        xhr.open("GET", "http://" + serverIP + ":9000/api/tmdbdiscover/type/" + qtype + "/genretype/" + genretype + "/sort/" + sortby + "/date/" + ptoday + "/lang/" + languageListText['tmdbcode'][dbpos] + "/page/" + cpage);
+        alert("[White Raven] Tmdb request: http://" + serverIP + ":9000/api/v0/tmdbdiscover/type/" + qtype + "/genretype/" + genretype + "/sort/" + sortby + "/date/" + ptoday + "/lang/" + languageListText['tmdbcode'][dbpos] + "/page/" + cpage);
+        xhr.open("GET", "http://" + serverIP + ":9000/api/v0/tmdbdiscover/type/" + qtype + "/genretype/" + genretype + "/sort/" + sortby + "/date/" + ptoday + "/lang/" + languageListText['tmdbcode'][dbpos] + "/page/" + cpage);
     } else {
         if (type == "first") {
-            xhr.open("GET", "http://" + serverIP + ":9000/api/tmdbsearch/type/movie/lang/" + languageListText['tmdbcode'][dbpos] + "/page/" + cpage + "/text/" + typedtext);
+            xhr.open("GET", "http://" + serverIP + ":9000/api/v0/tmdbsearch/type/movie/lang/" + languageListText['tmdbcode'][dbpos] + "/page/" + cpage + "/text/" + typedtext);
         } else {
-            xhr.open("GET", "http://" + serverIP + ":9000/api/tmdbsearch/type/tv/lang/" + languageListText['tmdbcode'][dbpos] + "/page/" + cpage + "/text/" + typedtext);
+            xhr.open("GET", "http://" + serverIP + ":9000/api/v0/tmdbsearch/type/tv/lang/" + languageListText['tmdbcode'][dbpos] + "/page/" + cpage + "/text/" + typedtext);
         }
     }
 
@@ -1904,7 +1876,7 @@ SceneMain.prototype.handleHide = function(){
     // SMART HUB, SOURCE or EXIT key pressed so need to stop the server.    
     alert("[White Raven] SMART HUB, SOURCE or EXIT key pressed and stopped the application.");
     var imgStop = document.createElement("img");
-    imgStop.setAttribute("src", "http://" + serverIP + ":9000/api/stop");
+    imgStop.setAttribute("src", "http://" + serverIP + ":9000/api/v0/stop");
 
     // Save resume data
     resume['time'] = sf.scene.get('PlayerPage').GetResumeTime();

@@ -555,11 +555,11 @@ SceneInfoPage.prototype.GetMovieInfo = function(tmdbid) {
             poster_path: "dummy.jpg",
             backdrop_path: "dummy.jpg",
             genres: [],
-            imdb_id: 0
+            imdb_id: ""
         };
         
         if (xhr.status == 200) {
-            dataobject = JSON.parse(xhr.responseText).results[0];
+            dataobject = JSON.parse(xhr.responseText).result;
         } 
 
         var poster = document.getElementById('poster');
@@ -628,7 +628,7 @@ SceneInfoPage.prototype.GetMovieInfo = function(tmdbid) {
     }.bind(this));
 
     // Outside request
-    xhr.open("GET", "http://" + serverIP + ":9000/api/tmdbinfo/type/movie/tmdbid/" + tmdbid + "/lang/" + languageListText['tmdbcode'][this.dbpos]);
+    xhr.open("GET", "http://" + serverIP + ":9000/api/v0/tmdbinfo/type/movie/tmdbid/" + tmdbid + "/lang/" + languageListText['tmdbcode'][this.dbpos]);
     xhr.send();
 
     setTimeout(function() {
@@ -666,16 +666,16 @@ SceneInfoPage.prototype.GetSerieInfo = function(tmdbid) {
                 poster_path: "dummy.jpg",
                 backdrop_path: "dummy.jpg",
                 genres: [],
-                imdb_id: 0,
+                imdb_id: "",
                 external_ids: {
-                    imdb_id: 0,
+                    imdb_id: "",
                     tvdb_id: 0,
                 },
                 seasons: []
             };
             
             if (xhr.status == 200) {
-                dataobject = JSON.parse(xhr.responseText).results[0];
+                dataobject = JSON.parse(xhr.responseText).result;
             }
 
             var poster = document.getElementById('poster');
@@ -740,7 +740,7 @@ SceneInfoPage.prototype.GetSerieInfo = function(tmdbid) {
     }.bind(this));
 
     // Outside request
-    xhr.open("GET", "http://" + serverIP + ":9000/api/tmdbinfo/type/tv/tmdbid/" + tmdbid + "/lang/" + languageListText['tmdbcode'][this.dbpos]);
+    xhr.open("GET", "http://" + serverIP + ":9000/api/v0/tmdbinfo/type/tv/tmdbid/" + tmdbid + "/lang/" + languageListText['tmdbcode'][this.dbpos]);
     xhr.send();
 
     setTimeout(function() {
@@ -972,7 +972,7 @@ SceneInfoPage.prototype.GetTVMazeInfo = function(tvdb, imdb) {
       }
     }.bind(this));
 
-    xhr.open("GET", "http://" + serverIP + ":9000/api/tvmazeepisodes"
+    xhr.open("GET", "http://" + serverIP + ":9000/api/v0/tvmazeepisodes"
         + (tvdb ? "/tvdb/" + tvdb : "")
         + (imdb ? "/imdb/" + imdb : "")
     );
@@ -1082,7 +1082,13 @@ SceneInfoPage.prototype.GetResolverData = function(imdb, type, title, year, seas
       }
     });
 
-    var query = encodeURIComponent("title=" + title + "&releaseyear=" + year);
+    var query = "";
+    
+    if (year > 1900) {
+        query = encodeURIComponent("title=" + title + "&releaseyear=" + year);
+    } else {
+        query = encodeURIComponent("title=" + title);
+    }
 
     if (type == 'movie') {
         var providers = "";
@@ -1093,8 +1099,20 @@ SceneInfoPage.prototype.GetResolverData = function(imdb, type, title, year, seas
             }
         }
         providers = providers.slice(0, -1);
+
+        var url = "http://" + serverIP + ":9000/api/v0/getmoviemagnet";
+
+        if (imdb !== "") {
+            url += "/imdb/" + imdb;
+        }
+
+        if (query !== "") {
+            url += "/query/" + query;
+        }
+
+        url += "/providers/" + providers;
         
-        xhr.open("GET", "http://" + serverIP + ":9000/api/getmoviemagnet/imdb/" + imdb + "/query/" + query + "/providers/" + providers);
+        xhr.open("GET", url);
     } else {
         var providers = "";
         for (var i=0; i<tvSourceListText['name'].length; i++) {
@@ -1105,7 +1123,19 @@ SceneInfoPage.prototype.GetResolverData = function(imdb, type, title, year, seas
         }
         providers = providers.slice(0, -1);
 
-        xhr.open("GET", "http://" + serverIP + ":9000/api/getshowmagnet/imdb/" + imdb + "/query/" + query + "/season/" + season + "/episode/" + episode + "/providers/" + providers);
+        var url = "http://" + serverIP + ":9000/api/v0/getshowmagnet";
+
+        if (imdb !== "") {
+            url += "/imdb/" + imdb;
+        }
+
+        if (query !== "") {
+            url += "/query/" + query;
+        }
+
+        url += "/season/" + season + "/episode/" + episode + "/providers/" + providers;
+
+        xhr.open("GET", url);
     }
 
     xhr.send();

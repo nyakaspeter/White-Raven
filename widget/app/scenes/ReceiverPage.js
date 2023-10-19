@@ -28,14 +28,14 @@ SceneReceiverPage.prototype.handleShow = function (arguments) {
     widgetAPI.putInnerHTML(document.getElementById("noConnection"), receiverText[lang] + "HTTP://" + serverIP + ":9000");
     document.getElementById("noConnection").style.visibility = "visible";
 
-    $.ajax({ url: "http://" + serverIP + ":9000/api/receivemagnet/start", success: function(result) {}});
+    $.ajax({ url: "http://" + serverIP + ":9000/receiver/start", success: function(result) {}});
     receivingProgress = true;
     this.CheckReceivedTorrent();
 };
 
 SceneReceiverPage.prototype.handleHide = function () {
     receivingProgress = false;
-    $.ajax({ url: "http://" + serverIP + ":9000/api/receivemagnet/stop", success: function(result) {}});
+    $.ajax({ url: "http://" + serverIP + ":9000/receiver/stop", success: function(result) {}});
 
 	if (this.caller == "MainMenu") {
         document.getElementById('noConnection').style.visibility = "hidden";
@@ -58,7 +58,7 @@ SceneReceiverPage.prototype.handleFocus = function () {
     haveMultiVideo = false;
     receivingProgress = true;
 
-    $.ajax({ url: "http://" + serverIP + ":9000/api/receivemagnet/start", success: function(result) {}});
+    $.ajax({ url: "http://" + serverIP + ":9000/receiver/start", success: function(result) {}});
     this.CheckReceivedTorrent();
 };
 
@@ -96,7 +96,7 @@ SceneReceiverPage.prototype.SetZIndex = function(state, number) {
 
 SceneReceiverPage.prototype.CheckReceivedTorrent = function() {
     $.ajax({
-        url: "http://" + serverIP + ":9000/api/receivemagnet/check",
+        url: "http://" + serverIP + ":9000/receiver/check",
         type: "GET",
         dataType: "json",
         timeout: 25000,
@@ -118,7 +118,7 @@ SceneReceiverPage.prototype.CheckReceivedTorrent = function() {
                         document.getElementById("loaDing").className = "loaderon";
                         document.getElementById("loaDing").style.visibility = "visible";
 
-                        $.ajax({ url: "http://" + serverIP + ":9000/api/receivemagnet/stop", success: function(result) {}});
+                        $.ajax({ url: "http://" + serverIP + ":9000/receiver/stop", success: function(result) {}});
 
                         resume['hash'] = data.received;
                         resume['imdb'] = '';
@@ -201,7 +201,7 @@ SceneReceiverPage.prototype.StartTorrentDownload = function(titletext, base64uri
                 }
             } else {
                 // Prevent stucked torrent
-                $.ajax({ url: 'http://' + serverIP + ':9000/api/deleteall', success: function(result) {}});
+                $.ajax({ url: 'http://' + serverIP + ':9000/api/v0/deleteall', success: function(result) {}});
                 
                 document.getElementById("loaDing").style.visibility = "hidden";
                 document.getElementById("loaDing").className = "loaderoff";
@@ -221,7 +221,7 @@ SceneReceiverPage.prototype.StartTorrentDownload = function(titletext, base64uri
         }.bind(this));
 
         
-        xhr.open("GET", 'http://' + serverIP + ':9000/api/add/' + base64uri);
+        xhr.open("GET", 'http://' + serverIP + ':9000/api/v0/add/' + base64uri);
         xhr.send();
 
     }
@@ -234,7 +234,7 @@ SceneReceiverPage.prototype.StartTorrentDownload = function(titletext, base64uri
             }
 
             // Prevent stucked torrent
-            $.ajax({ url: 'http://' + serverIP + ':9000/api/deleteall', success: function(result) {}});
+            $.ajax({ url: 'http://' + serverIP + ':9000/api/v0/deleteall', success: function(result) {}});
 
             document.getElementById("loaDing").style.visibility = "hidden";
             document.getElementById("loaDing").className = "loaderoff";
@@ -402,7 +402,7 @@ SceneReceiverPage.prototype.SearchSubtitlesByText = function(title, filetitle, l
         }
     }.bind(this));
 
-    xhr.open("GET", "http://" + serverIP + ":9000/api/subtitlesbytext/" + title + "/lang/" + language + "/season/" + season + "/episode/" + episode);
+    xhr.open("GET", "http://" + serverIP + ":9000/api/v0/subtitlesbytext/" + title + "/lang/" + language + "/season/" + season + "/episode/" + episode);
     xhr.send();
 
     setTimeout(function() {

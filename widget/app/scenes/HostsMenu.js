@@ -234,7 +234,7 @@ SceneHostsMenu.prototype.StartTorrentDownload = function(titletext, base64uri) {
                 }
             } else {
                 // Prevent stucked torrent
-                $.ajax({ url: 'http://' + serverIP + ':9000/api/deleteall', success: function(result) {}});
+                $.ajax({ url: 'http://' + serverIP + ':9000/api/v0/deleteall', success: function(result) {}});
                 
                 document.getElementById("loaDing").style.visibility = "hidden";
                 document.getElementById("loaDing").className = "loaderoff";
@@ -253,7 +253,7 @@ SceneHostsMenu.prototype.StartTorrentDownload = function(titletext, base64uri) {
         }.bind(this));
 
         
-        xhr.open("GET", 'http://' + serverIP + ':9000/api/add/' + base64uri);
+        xhr.open("GET", 'http://' + serverIP + ':9000/api/v0/add/' + base64uri);
         xhr.send();
 
     }
@@ -266,7 +266,7 @@ SceneHostsMenu.prototype.StartTorrentDownload = function(titletext, base64uri) {
             }
 
             // Prevent stucked torrent
-            $.ajax({ url: 'http://' + serverIP + ':9000/api/deleteall', success: function(result) {}});
+            $.ajax({ url: 'http://' + serverIP + ':9000/api/v0/deleteall', success: function(result) {}});
 
             document.getElementById("loaDing").style.visibility = "hidden";
             document.getElementById("loaDing").className = "loaderoff";
@@ -564,7 +564,7 @@ SceneHostsMenu.prototype.SearchSubtitles = function(imdbid, title, filetitle, la
       	}
     }.bind(this));
 
-    xhr.open("GET", "http://" + serverIP + ":9000/api/subtitlesbyimdb/" + imdbid + "/lang/" + language + "/season/" + season + "/episode/" + episode);
+    xhr.open("GET", "http://" + serverIP + ":9000/api/v0/subtitlesbyimdb/" + imdbid + "/lang/" + language + "/season/" + season + "/episode/" + episode);
     xhr.send();
 
     setTimeout(function() {
@@ -642,7 +642,7 @@ SceneHostsMenu.prototype.SearchSubtitlesByText = function(title, filetitle, lang
         }
     }.bind(this));
 
-    xhr.open("GET", "http://" + serverIP + ":9000/api/subtitlesbytext/" + title + "/lang/" + language + "/season/" + season + "/episode/" + episode);
+    xhr.open("GET", "http://" + serverIP + ":9000/api/v0/subtitlesbytext/" + title + "/lang/" + language + "/season/" + season + "/episode/" + episode);
     xhr.send();
 
     setTimeout(function() {

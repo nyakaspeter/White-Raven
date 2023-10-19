@@ -126,7 +126,7 @@ ScenePlayerPage.prototype.initialize = function () {
                     }
                     infoHash = "";
                     Player.stopVideo();
-                    //$.ajax({ url: 'http://' + serverIP + ':9000/api/deleteall', success: function(result) {}});
+                    //$.ajax({ url: 'http://' + serverIP + ':9000/api/v0/deleteall', success: function(result) {}});
                 }
 
                 // Hide all possible menus and dialogs
@@ -175,7 +175,7 @@ ScenePlayerPage.prototype.initialize = function () {
                         }
                         infoHash = "";
                         Player.stopVideo();
-                        //$.ajax({ url: 'http://' + serverIP + ':9000/api/deleteall', success: function(result) {}});
+                        //$.ajax({ url: 'http://' + serverIP + ':9000/api/v0/deleteall', success: function(result) {}});
                     }
 
                     document.getElementById("loaDing").style.visibility = "hidden";
@@ -1088,7 +1088,7 @@ ScenePlayerPage.prototype.handleShow = function (data) {
             this.Player.clear(); this.Display.clear(); this.Display.hide(); this.Audio.clear();
 
             if (data.caller != "MultiVideo") {
-                $.ajax({ url: 'http://' + serverIP + ':9000/api/deleteall', success: function(result) {}});
+                $.ajax({ url: 'http://' + serverIP + ':9000/api/v0/deleteall', success: function(result) {}});
             }
         }.bind(this);
         this.Player.setVideoURL(data.url);

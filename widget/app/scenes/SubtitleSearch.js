@@ -350,7 +350,7 @@ SceneSubtitleSearch.prototype.SearchSubtitlesByText = function(title, language, 
         }
     }.bind(this));
 
-    xhr.open("GET", "http://" + serverIP + ":9000/api/subtitlesbytext/" + title + "/lang/" + language + "/season/" + season + "/episode/" + episode);
+    xhr.open("GET", "http://" + serverIP + ":9000/api/v0/subtitlesbytext/" + title + "/lang/" + language + "/season/" + season + "/episode/" + episode);
     xhr.send();
 
     setTimeout(function() {
