@@ -6,6 +6,8 @@
 #
 . /dtv/SGO.env
 
+# ALWAYS MAKE SURE THIS FILE IS SAVED WITH UNIX LINE ENDINGS (LF)!
+
 # If you want to use the Jackett provider, you must set the API address here
 # Example: http://192.168.0.2:9117
 JACKETTADDRESS=""
