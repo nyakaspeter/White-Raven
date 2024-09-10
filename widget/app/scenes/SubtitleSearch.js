@@ -156,7 +156,7 @@ SceneSubtitleSearch.prototype.handleKeyDown = function (keyCode) {
                                     document.getElementById('OverlaySubtitleSearch').style.visibility = "hidden";
                                     sf.scene.get('PlayerPage').SetZIndex("visible", 5600);
 
-                                    this.SearchSubtitlesByText(this.titletext, languageListText['longcode'][this.langpos], s, e);
+                                    this.SearchSubtitlesByText(this.titletext, languageListText['shortcode'][this.langpos], s, e);
                                 }
                             } else if (keybutton[i].className == 'subkeybutton subactivekey space') {
                                 widgetAPI.putInnerHTML(document.getElementById('subsearchtext'), findthis.trim() + ' ' + '<span class="subblink">|</span>');

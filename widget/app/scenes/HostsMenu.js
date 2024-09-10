@@ -225,9 +225,9 @@ SceneHostsMenu.prototype.StartTorrentDownload = function(titletext, base64uri) {
 
 	                issubtitle = false;
 	                if (saveSettings['issubtitleenabled'] == "true" && saveSettings['subtitlemode'] == "imdb") {
-	                    this.SearchSubtitles(this.imdbid, this.titletext, this.filetitle, languageListText['longcode'][this.langpos], this.season, this.episode);                              
+	                    this.SearchSubtitles(this.imdbid, this.titletext, this.filetitle, languageListText['shortcode'][this.langpos], this.season, this.episode);                              
 	                } else if (saveSettings['issubtitleenabled'] == "true" && saveSettings['subtitlemode'] == "hash") {
-	                    this.SearchSubtitlesByFile(this.playurl.replace("get", "subtitlesbyfile"), this.titletext, languageListText['longcode'][this.langpos]);                              
+	                    this.SearchSubtitlesByFile(this.playurl.replace("get", "subtitlesbyfile"), this.titletext, languageListText['shortcode'][this.langpos]);                              
 	                } else {
 	                    this.PlayMovieUrl(this.playurl, this.titletext);
 	                }
@@ -441,9 +441,9 @@ SceneHostsMenu.prototype.StartPlayback = function(url, titletext, langpos, filet
     issubtitle = false;
     if (saveSettings['issubtitleenabled'] == "true") {
         if (this.imdbid != "") {
-            this.SearchSubtitles(this.imdbid, this.titletext, this.filetitle, languageListText['longcode'][this.langpos], s, e);
+            this.SearchSubtitles(this.imdbid, this.titletext, this.filetitle, languageListText['shortcode'][this.langpos], s, e);
         } else {
-            this.SearchSubtitlesByText(this.titletext, this.filetitle, languageListText['longcode'][this.langpos], s, e);
+            this.SearchSubtitlesByText(this.titletext, this.filetitle, languageListText['shortcode'][this.langpos], s, e);
         }
     } else {
         this.PlayMovieUrl(this.playurl, this.titletext);
@@ -745,7 +745,10 @@ SceneHostsMenu.prototype.DownloadSubtitle = function(zipdownload) {
     }.bind(this));
 
     xhr.open("GET", zipdownload);
-    xhr.send();
+
+    setTimeout(function() {
+        xhr.send();
+    }, 2000);
 
     setTimeout(function() {
         if (!reqSuccess) {

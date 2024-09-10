@@ -94,8 +94,8 @@ languageListText['hu'] = ['AUTOMATIKUS',
                         'LITVÁN', 'NORVÉG', 'PERZSA ', 'LENGYEL', 'PORTUGÁL', 'PORTUGÁL ( BR )', 'ROMÁN', 'OROSZ', 'SZERB',
                         'SZLOVÁK', 'SPANYOL', 'SZUAHÉLI', 'SVÉD', 'THAI', 'TÖRÖK', 'URDU', 'VIETNÁMI'];                        
 interfaceLangText['hu'] = ['AUTOMATIKUS', 'BOLGÁR', 'HORVÁT', 'ANGOL', 'MAGYAR', 'SPANYOL', 'SZLOVÁK', 'OLASZ'];
-movieSourceListText['hu'] = ['JACKETT', 'YTS', '1337X', 'ITORRENT'];
-tvSourceListText['hu'] = ['JACKETT', 'EZTV', '1337X', 'ITORRENT'];
+movieSourceListText['hu'] = ['JACKETT', 'NCORE', 'INSANE', 'YTS', '1337X', 'ITORRENT'];
+tvSourceListText['hu'] = ['JACKETT', 'NCORE', 'INSANE', 'EZTV', '1337X', 'ITORRENT'];
 subtitleModeListText['hu'] = ['IMDB ID', 'FÁJL HASH'];
 downSpeedListText['hu'] = ['256 KB/s', '512 KB/s', '1 MB/s', '2 MB/s', '4 MB/s', '6 MB/s', '8 MB/s', 'KORLÁTLAN'];
 upSpeedListText['hu'] = ['256 KB/s', '512 KB/s', '1 MB/s', '2 MB/s', '4 MB/s', '6 MB/s', '8 MB/s', 'LETILTVA'];

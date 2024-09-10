@@ -94,8 +94,8 @@ languageListText['bg'] = ['АВТОМАТИЧНО',
                         'ЛИТОВСКИ', 'НОРВЕЖКИ', 'ПЕРСИЙСКИ', 'ПОЛСКИ', 'ПОРТУГАЛСКИ', 'ПОРТУГАЛСКИ ( БР )', 'РУМЪНСКИ', 'РУСКИ', 'СРЪБСКИ',
                         'СЛОВАШКИ', 'ИСПАНСКИ', 'СУАХИЛИ', 'ШВЕДСКИ', 'ТАЙЛАНДСКИ', 'ТУРСКИ', 'УРДУ', 'ВИЕТНАМСКИ'];                      
 interfaceLangText['bg'] = ['АВТОМАТИЧНИ', 'БЪЛГАРСКИ', 'ХЪРВАТСКИ', 'АНГЛИЙСКИ', 'УНГАРСКИ', 'ИСПАНСКИ', 'СЛОВАШКИ', 'ИТАЛИАНСКИ'];
-movieSourceListText['bg'] = ['JACKETT', 'YTS', '1337X', 'ITORRENT'];
-tvSourceListText['bg'] = ['JACKETT', 'EZTV', '1337X', 'ITORRENT'];
+movieSourceListText['bg'] = ['JACKETT', 'NCORE', 'INSANE', 'YTS', '1337X', 'ITORRENT'];
+tvSourceListText['bg'] = ['JACKETT', 'NCORE', 'INSANE', 'EZTV', '1337X', 'ITORRENT'];
 subtitleModeListText['bg'] = ['IMDB ID', 'FILE HASH'];
 downSpeedListText['bg'] = ['256 KB/s', '512 KB/s', '1 MB/s', '2 MB/s', '4 MB/s', '6 MB/s', '8 MB/s', 'НЕОГРАНИЧЕН'];
 upSpeedListText['bg'] = ['256 KB/s', '512 KB/s', '1 MB/s', '2 MB/s', '4 MB/s', '6 MB/s', '8 MB/s', 'ЗАБРАНИ'];

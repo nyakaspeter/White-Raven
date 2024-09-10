@@ -281,7 +281,7 @@ SceneReceiverPage.prototype.StartPlayback = function(url, titletext, langpos, fi
     
     issubtitle = false;
     if (saveSettings['issubtitleenabled'] == "true") {
-        this.SearchSubtitlesByText(this.titletext, this.filetitle, languageListText['longcode'][this.langpos], s, e);                             
+        this.SearchSubtitlesByText(this.titletext, this.filetitle, languageListText['shortcode'][this.langpos], s, e);                             
     } else {
         this.PlayMovieUrl(this.playurl, this.titletext);
     }
@@ -444,7 +444,10 @@ SceneReceiverPage.prototype.DownloadSubtitle = function(zipdownload) {
     }.bind(this));
 
     xhr.open("GET", zipdownload);
-    xhr.send();
+    
+    setTimeout(function() {
+        xhr.send();
+    }, 2000);
 
     setTimeout(function() {
         if (!reqSuccess) {

@@ -94,8 +94,8 @@ languageListText['es'] = ['AUTOMÁTICO',
                         'LITUANO', 'NORUEGO', 'PERSA', 'POLACO', 'PORTUGUÉS', 'PORTUGUÉS ( BR )', 'RUMANO', 'RUSO', 'SERBIO',
                         'ESLOVACO', 'ESPAÑOL', 'SUAJILI', 'SUECO', 'TAILANDÉS', 'TURCO', 'URDU', 'VIETNAMITA'];                      
 interfaceLangText['es'] = ['AUTOMÁTICO', 'BÚLGARO', 'CROATA', 'INGLÉS', 'HÚNGARO', 'ESPAÑOL', 'ESLOVACO', 'ITALIANO'];
-movieSourceListText['es'] = ['JACKETT', 'YTS', '1337X', 'ITORRENT'];
-tvSourceListText['es'] = ['JACKETT', 'EZTV', '1337X', 'ITORRENT'];
+movieSourceListText['es'] = ['JACKETT', 'NCORE', 'INSANE', 'YTS', '1337X', 'ITORRENT'];
+tvSourceListText['es'] = ['JACKETT', 'NCORE', 'INSANE', 'EZTV', '1337X', 'ITORRENT'];
 subtitleModeListText['es'] = ['IMDB ID', 'HASH DEL FICHERO'];
 downSpeedListText['es'] = ['256 KB/s', '512 KB/s', '1 MB/s', '2 MB/s', '4 MB/s', '6 MB/s', '8 MB/s', 'ILIMITADO'];
 upSpeedListText['es'] = ['256 KB/s', '512 KB/s', '1 MB/s', '2 MB/s', '4 MB/s', '6 MB/s', '8 MB/s', 'DISCAPACITADA'];

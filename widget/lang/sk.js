@@ -94,8 +94,8 @@ languageListText['sk'] = ['AUTOMATICKÝ',
                         'LITVANSKY', 'NÓRSKY', 'PERZSKY', 'POĽSKY', 'PORTUGALSKY', 'PORTUGALSKY ( BR )', 'RUMUNSKY', 'RUSKY', 'SRBSKY',
                         'SLOVENSKÝ', 'ŠPANIELSKY', 'SWAHILI', 'ŠVEDSKY', 'THAJSKY', 'TURECKY', 'URDU', 'VIETNAMSKY'];
 interfaceLangText['sk'] = ['AUTOMATICKÝ', 'BULHARSKÝ', 'CHORVÁTSKY', 'ANGLICKÝ', 'MAĎARSKÝ', 'ŠPANIELSKY', 'SLOVENSKÝ', 'TALIANSKY'];
-movieSourceListText['sk'] = ['JACKETT', 'YTS', '1337X', 'ITORRENT'];
-tvSourceListText['sk'] = ['JACKETT', 'EZTV', '1337X', 'ITORRENT'];
+movieSourceListText['sk'] = ['JACKETT', 'NCORE', 'INSANE', 'YTS', '1337X', 'ITORRENT'];
+tvSourceListText['sk'] = ['JACKETT', 'NCORE', 'INSANE', 'EZTV', '1337X', 'ITORRENT'];
 subtitleModeListText['sk'] = ['IMDB ID', 'SÚBOR HASH'];
 downSpeedListText['sk'] = ['256 KB/s', '512 KB/s', '1 MB/s', '2 MB/s', '4 MB/s', '6 MB/s', '8 MB/s', 'NEOBMEDZENÝ'];
 upSpeedListText['sk'] = ['256 KB/s', '512 KB/s', '1 MB/s', '2 MB/s', '4 MB/s', '6 MB/s', '8 MB/s', 'ZAKÁZANÉ'];
